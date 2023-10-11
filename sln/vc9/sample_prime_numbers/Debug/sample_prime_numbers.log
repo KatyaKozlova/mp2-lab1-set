@@ -1,0 +1,3 @@
+﻿cl : командная строка  warning D9035: использование параметра "Gm" нежелательно, он будет удален в следующих выпусках
+  sample_prime_numbers.cpp
+  sample_prime_numbers.vcxproj -> C:\Users\katya\source\mp2-lab1-set\sln\vc9\Debug\sample_prime_numbers.exe
