@@ -6,6 +6,7 @@
 // Множество - реализация через битовые поля
 
 #include "tset.h"
+#include <cassert>
 
 
 TSet::TSet(int mp) : BitField(mp)
@@ -116,12 +117,25 @@ TSet TSet::operator~(void) // дополнение
 
 istream &operator>>(istream &istr, TSet &s) // ввод
 {
-    istr >> s.BitField;
+    string str;
+    istr >> str;
+
+    assert(str.length() == s.BitField.GetLength());
+
+    for (int i = 0; i < s.BitField.GetLength(); i++) {
+        s.BitField.ClrBit(i);
+        if (str[i] == '1')
+            s.BitField.SetBit(i);
+    }
+
     return istr;
 }
 
+
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
-    ostr << s.BitField;
+ 
+    for (int i = 0; i < s.BitField.GetLength(); i++)
+        ostr << s.BitField.GetBit(i);
     return ostr;
 }

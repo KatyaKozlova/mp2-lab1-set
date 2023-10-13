@@ -7,8 +7,9 @@
 
 #include "tbitfield.h"
 #include <cassert>
-static constexpr int BitsinElem = numeric_limits<TELEM>::digits; 
-inline void TBitField::IsIndex(const int index) const {  // проверяем индекс
+static constexpr int BitsinElem = numeric_limits<TELEM>::digits;// static указывает, что BitsinElem  будет существовать на протяжении всего исполнения программы. constexpr указывает, что значение переменной BitsinElem будет вычислено во время компиляции и значение будет постоянным и неизменным
+// numeric_limits возвращает количество битов, используемых для представления значений типа TELEM
+inline void TBitField::IsIndex(const int index) const {  // проверяем индекс. inline-нужен для ускорения работы программы
 	if (index < 0 || index >= BitLen) 
 		throw exception("error index");
 }
@@ -97,7 +98,7 @@ int TBitField::operator==(const TBitField &bf) const // сравнение
 	}
 	return true;
 	
-  return 0;
+
 }
 
 int TBitField::operator!=(const TBitField &bf) const // сравнение
@@ -135,7 +136,7 @@ TBitField TBitField::operator&(const TBitField& bf) // операция "и"
 	}
 
 	return res;
-	return 0;
+
 
 }
 
@@ -148,7 +149,7 @@ TBitField TBitField::operator~(void) // отрицание
 		else
 			out.SetBit(i);
 	return out;
-	return 0;
+	
 }
 
 // ввод/вывод
